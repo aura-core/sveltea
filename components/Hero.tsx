@@ -49,19 +49,20 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="hero__strip reveal" data-d="4">
-              {SPECS.map((s) => (
-                <div key={s.label} className="hero__spec">
-                  <span className="hero__spec-val">{s.val}</span>
-                  <span className="hero__spec-label">{s.label}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Right column: carousel */}
-          <div className="reveal" data-d="2">
+          <div className="hero__media reveal" data-d="2">
             <HeroCarousel />
+          </div>
+
+          <div className="hero__strip reveal" data-d="4">
+            {SPECS.map((s) => (
+              <div key={s.label} className="hero__spec">
+                <span className="hero__spec-val">{s.val}</span>
+                <span className="hero__spec-label">{s.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

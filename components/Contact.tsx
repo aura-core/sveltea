@@ -60,7 +60,7 @@ export default function Contact() {
               className="contact-card__title"
               dangerouslySetInnerHTML={{ __html: cardTitle }}
             />
-            <p style={{ fontSize: 'var(--t-body)', color: 'var(--stone)', lineHeight: 1.7 }}>
+            <p className="contact-card__desc">
               {cardDesc}
             </p>
 
@@ -105,20 +105,11 @@ export default function Contact() {
             </h3>
 
             {submitted ? (
-              <div
-                style={{
-                  padding: '40px 0',
-                  textAlign: 'center',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '16px',
-                }}
-              >
-                <span style={{ fontSize: '40px', fontFamily: 'var(--serif)', fontStyle: 'italic' }}>
+              <div className="form-card__thanks">
+                <span className="form-card__thanks-title">
                   Gracias.
                 </span>
-                <p style={{ color: 'var(--stone)', fontSize: '14px' }}>
+                <p className="form-card__thanks-copy">
                   Te responderemos en menos de 24 horas hábiles.
                 </p>
               </div>

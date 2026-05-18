@@ -75,7 +75,7 @@ export default function Footer() {
             </p>
             <p className="footer__contact-item">Colombia</p>
             <p className="footer__contact-item">Lun–Vie: 8am–6pm</p>
-            <p className="footer__contact-item" style={{ marginTop: '16px' }}>
+            <p className="footer__contact-item footer__contact-item--spaced">
               <a
                 href="https://wa.me/573016001737"
                 target="_blank"

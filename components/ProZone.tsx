@@ -25,14 +25,7 @@ export default function ProZone() {
             consentimiento informado. Las consultas técnicas son atendidas
             directamente por la dirección médica de Cellstech.
           </p>
-          <div
-            style={{
-              display: 'flex',
-              gap: '12px',
-              marginTop: '28px',
-              flexWrap: 'wrap',
-            }}
-          >
+          <div className="pro-zone__actions">
             <a href="#contacto" className="btn btn--filled">
               Solicitar acceso <ArrowIcon size={12} />
             </a>

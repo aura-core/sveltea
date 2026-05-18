@@ -26,13 +26,7 @@ export default function Nav() {
   return (
     <>
       <header
-        className="nav"
-        style={{
-          background: scrolled
-            ? 'rgba(255,255,255,0.96)'
-            : 'rgba(255,255,255,0.92)',
-          boxShadow: scrolled ? '0 1px 24px rgba(0,0,0,0.07)' : 'none',
-        }}
+        className={`nav${scrolled ? ' nav--scrolled' : ''}`}
       >
         <a href="#" className="nav__logo" aria-label="Sveltea — inicio">
           <Image
@@ -40,7 +34,7 @@ export default function Nav() {
             alt="Sveltea"
             height={36}
             width={120}
-            style={{ height: '36px', width: 'auto' }}
+            className="nav__logo-img"
             priority
           />
         </a>
@@ -83,9 +77,8 @@ export default function Nav() {
           ))}
           <a
             href="#contacto"
-            className="mobile-menu__link"
+            className="mobile-menu__link mobile-menu__link--accent"
             onClick={handleLinkClick}
-            style={{ color: 'var(--accent)' }}
           >
             Solicitar información
           </a>

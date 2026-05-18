@@ -89,7 +89,7 @@ export default function Evidence() {
             están documentados en revisiones sistemáticas, ensayos clínicos y consensos
             de expertos internacionales.
           </p>
-          <a href="#" className="link-arrow" style={{ marginTop: '16px', display: 'inline-flex' }}>
+          <a href="#" className="link-arrow sec-head__link">
             Bibliografía completa <ArrowIcon size={11} />
           </a>
         </SectionHead>

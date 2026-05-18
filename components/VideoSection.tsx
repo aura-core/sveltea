@@ -72,34 +72,13 @@ export default function VideoSection() {
 
               <span className="video-frame__label">SVELTEA · 001</span>
 
-              <div
-                className="video-frame__rec"
-                style={{ top: '16px', right: '16px', left: 'auto', position: 'absolute' }}
-              >
+              <div className="video-frame__rec">
                 <span>ANIMACIÓN</span>
               </div>
 
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '34px',
-                  right: '16px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                }}
-              >
+              <div className="video-frame__rec-status">
                 <div className="video-frame__rec-dot" />
-                <span
-                  style={{
-                    fontFamily: 'var(--mono)',
-                    fontSize: '9px',
-                    letterSpacing: '0.12em',
-                    color: 'rgba(255,255,255,0.4)',
-                  }}
-                >
-                  REC
-                </span>
+                <span>REC</span>
               </div>
 
               <div className="video-frame__duration">00:35</div>

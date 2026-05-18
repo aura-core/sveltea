@@ -94,10 +94,16 @@ export default function Applications() {
             </div>
           </div>
 
-          {/* Right: visual placeholder */}
-          <div className="app-visual">
+          <div className={`app-visual app-visual--${tab}`} aria-hidden="true">
             <div className="app-visual__inner">
-              {tab === 'facial' ? 'facial' : 'cuerpo'}
+              <span className="app-visual__particle app-visual__particle--one" />
+              <span className="app-visual__particle app-visual__particle--two" />
+              <span className="app-visual__line app-visual__line--one" />
+              <span className="app-visual__line app-visual__line--two" />
+              <span className="app-visual__line app-visual__line--three" />
+              <span className="app-visual__mark">
+                {tab === 'facial' ? '01' : '02'}
+              </span>
             </div>
           </div>
         </div>
