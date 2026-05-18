@@ -2106,17 +2106,17 @@ ul, ol {
   }
 }
 
-.footer__brand-name {
-  font-family: var(--serif);
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 300;
-  color: #FFFFFF;
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
+.footer__brand-logo {
+  width: min(168px, 100%);
+  margin-bottom: 18px;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
-.footer__brand-name span {
-  color: #C99463;
+.footer__brand-logo-img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
 }
 
 .footer__brand-desc {
@@ -2297,8 +2297,7 @@ body {
 
 .hero__title,
 .sec-head__title,
-.app-content__title,
-.footer__brand-name {
+.app-content__title {
   letter-spacing: 0;
 }
 

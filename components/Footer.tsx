@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const RECURSOS_LINKS = [
   { href: '#que-es', label: 'Qué es Sveltea' },
   { href: '#como-funciona', label: 'Cómo funciona' },
@@ -23,8 +25,14 @@ export default function Footer() {
         <div className="footer__grid">
           {/* Brand column */}
           <div>
-            <div className="footer__brand-name">
-              SVELTEA<span>.</span>
+            <div className="footer__brand-logo">
+              <Image
+                src="/logo_sveltea_bw.png"
+                alt="Sveltea"
+                width={420}
+                height={104}
+                className="footer__brand-logo-img"
+              />
             </div>
             <p className="footer__brand-desc">
               Bioinductor de colágeno con hidroxiapatita de calcio. Diseñado para
