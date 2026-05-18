@@ -2410,30 +2410,66 @@ body {
 .slide-bg-3,
 .slide-bg-4 {
   background:
-    linear-gradient(128deg, rgba(232,184,41,0.42) 0 24%, transparent 24.2%),
-    radial-gradient(ellipse at 15% 80%, rgba(232,184,41,0.16), transparent 48%),
-    linear-gradient(105deg, #30260E 0%, #11100D 48%, #080807 100%);
+    radial-gradient(ellipse 78% 92% at 64% 34%, rgba(166,132,38,0.46) 0%, rgba(118,96,30,0.34) 32%, rgba(30,29,21,0.16) 58%, transparent 74%),
+    radial-gradient(ellipse 70% 88% at 44% 70%, rgba(111,94,34,0.20) 0%, rgba(24,24,18,0.12) 50%, transparent 72%),
+    linear-gradient(105deg, rgba(0,0,0,0.82) 0%, rgba(10,10,9,0.88) 23%, rgba(20,19,14,0.74) 48%, rgba(5,5,5,0.96) 100%),
+    #0A0A09;
 }
 
 .slide-bg-2 {
   background:
-    linear-gradient(42deg, transparent 0 58%, rgba(232,184,41,0.25) 58.2% 76%, transparent 76.2%),
-    radial-gradient(ellipse at 70% 18%, rgba(232,184,41,0.18), transparent 44%),
-    linear-gradient(160deg, #080807 0%, #17130A 100%);
+    radial-gradient(ellipse 68% 78% at 70% 28%, rgba(145,116,35,0.34) 0%, rgba(64,55,25,0.24) 38%, transparent 68%),
+    radial-gradient(ellipse 80% 68% at 18% 84%, rgba(115,95,32,0.26) 0%, rgba(25,24,17,0.18) 48%, transparent 72%),
+    linear-gradient(145deg, #070807 0%, #0D0D0B 42%, #18150D 68%, #080808 100%);
 }
 
 .slide-bg-3 {
   background:
-    linear-gradient(132deg, rgba(232,184,41,0.35) 0 19%, transparent 19.2%),
-    linear-gradient(90deg, rgba(232,184,41,0.12), transparent 48%),
-    linear-gradient(135deg, #2B210C 0%, #0A0A09 55%, #11100D 100%);
+    conic-gradient(from 220deg at 46% 61%, rgba(214,172,49,0.42) 0deg, rgba(123,99,34,0.26) 34deg, rgba(5,5,5,0.96) 82deg, rgba(9,10,9,0.98) 166deg, rgba(164,132,38,0.30) 246deg, rgba(213,170,45,0.28) 302deg, rgba(12,12,10,0.94) 360deg),
+    radial-gradient(ellipse 72% 56% at 20% 86%, rgba(217,174,46,0.24) 0%, rgba(76,64,25,0.20) 42%, transparent 72%),
+    linear-gradient(118deg, #0A0A09 0%, #080908 48%, #11100B 100%);
 }
 
 .slide-bg-4 {
   background:
-    linear-gradient(156deg, transparent 0 42%, rgba(232,184,41,0.24) 42.2% 55%, transparent 55.2%),
-    radial-gradient(ellipse at 28% 30%, rgba(232,184,41,0.24), transparent 42%),
-    linear-gradient(45deg, #0A0A09 0%, #19160D 100%);
+    radial-gradient(ellipse 54% 64% at 32% 28%, rgba(188,149,42,0.36) 0%, rgba(87,72,27,0.26) 42%, transparent 68%),
+    radial-gradient(ellipse 86% 56% at 72% 80%, rgba(120,99,34,0.22) 0%, rgba(18,18,13,0.18) 50%, transparent 74%),
+    linear-gradient(36deg, #080808 0%, #14120B 45%, #090909 100%);
+}
+
+.carousel__bg::before,
+.carousel__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.carousel__bg::before {
+  background:
+    radial-gradient(ellipse at center, transparent 44%, rgba(0,0,0,0.36) 100%),
+    linear-gradient(180deg, rgba(255,255,255,0.035), rgba(0,0,0,0.22));
+  mix-blend-mode: multiply;
+}
+
+.carousel__bg::after {
+  opacity: 0.16;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+.carousel__dots-pattern {
+  opacity: 0.09;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.42) 2px, transparent 2.8px);
+  background-size: 74px 74px;
+  background-position: 34px 36px;
+}
+
+.carousel__grain {
+  opacity: 0.075;
+  mix-blend-mode: overlay;
 }
 
 .carousel__overlay {
