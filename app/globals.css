@@ -565,16 +565,18 @@ ul, ol {
 .carousel__slide {
   position: absolute;
   inset: 0;
-  transition: opacity 0.8s var(--motion-soft);
+  transition: opacity 0.45s var(--motion-soft), visibility 0.45s var(--motion-soft);
 }
 
 .carousel__slide--active {
   opacity: 1;
+  visibility: visible;
   z-index: 2;
 }
 
 .carousel__slide--inactive {
   opacity: 0;
+  visibility: hidden;
   z-index: 1;
 }
 
@@ -2361,7 +2363,15 @@ body {
   }
 
   .hero__title {
-    font-size: clamp(72px, 8vw, 132px);
+    font-size: clamp(70px, 5.8vw, 108px);
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 0.86fr) minmax(520px, 1.14fr);
+    column-gap: clamp(64px, 5.5vw, 104px);
   }
 }
 
