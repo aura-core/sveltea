@@ -2758,23 +2758,24 @@ body {
   }
 
   .carousel__caption {
-    font-size: clamp(28px, 9vw, 38px);
+    font-size: clamp(25px, 7.6vw, 34px);
     line-height: 1.12;
+    max-width: 96%;
   }
 
   .carousel__bottom {
-    gap: 28px;
-    padding-bottom: 38px;
+    gap: 18px;
+    padding-bottom: 104px;
   }
 
   .carousel__controls {
-    bottom: 70px;
+    bottom: 58px;
     left: 18px;
     right: 18px;
   }
 
   .carousel__tag {
-    max-width: 68%;
+    max-width: 64%;
     line-height: 1.4;
   }
 
