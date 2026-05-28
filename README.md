@@ -1,25 +1,31 @@
-# CODING AGENTS: READ THIS FIRST
+# Sveltea Landing Page
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+Spanish landing page for Sveltea, a collagen bioinductor with calcium hydroxyapatite.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+## Contents
 
-## What you should do — IMPORTANT
+- `app/` - Next.js app entrypoints, layout, page composition, and global styles.
+- `components/` - React components for navigation, hero carousel, video section, product information, applications, evidence, professional area, FAQ, contact, and footer.
+- `public/` - Public assets used by the site, including logos and video.
+- `project/` - Original static HTML/CSS/JS prototype assets and reference files.
+- `chats/` - Plain project summary and design notes.
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+## Site Sections
 
-**Read `project/index.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+- Hero with Sveltea positioning, key specifications, and media carousel.
+- Procedure video section.
+- Product explanation and presentation options.
+- Mechanism timeline and procedure visualization.
+- Applications for facial rejuvenation and cellulite management.
+- Scientific evidence and regulatory notes.
+- Professional resources area.
+- FAQ, contact form, and footer.
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+## Development
 
-## About the design files
+```bash
+npm install
+npm run dev
+```
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
-
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
-
-## Bundle contents
-
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Sveltea Home` project files (HTML prototypes, assets, components)
+The local site runs at `http://127.0.0.1:3000` by default.
