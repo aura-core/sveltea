@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { SectionHead } from './ui'
 
 type VideoCaseKey = 'facial' | 'celulitis'
@@ -41,13 +41,40 @@ const videoCases: Record<VideoCaseKey, {
 
 export default function VideoSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const switchTimerRef = useRef<number | null>(null)
+  const shouldAutoplayNextRef = useRef(false)
   const [selectedCase, setSelectedCase] = useState<VideoCaseKey>('facial')
   const [playing, setPlaying] = useState(false)
   const currentCase = videoCases[selectedCase]
 
+  useEffect(() => {
+    if (!shouldAutoplayNextRef.current) return
+    shouldAutoplayNextRef.current = false
+
+    const v = videoRef.current
+    if (!v) return
+
+    v.play()
+      .then(() => setPlaying(true))
+      .catch(() => setPlaying(false))
+  }, [selectedCase])
+
+  useEffect(() => {
+    return () => {
+      if (switchTimerRef.current) {
+        window.clearTimeout(switchTimerRef.current)
+        switchTimerRef.current = null
+      }
+    }
+  }, [])
+
   const handlePlay = () => {
     const v = videoRef.current
     if (!v) return
+    if (switchTimerRef.current) {
+      window.clearTimeout(switchTimerRef.current)
+      switchTimerRef.current = null
+    }
     if (v.paused) {
       v.play()
       setPlaying(true)
@@ -58,6 +85,11 @@ export default function VideoSection() {
   }
 
   const selectCase = (key: VideoCaseKey) => {
+    if (switchTimerRef.current) {
+      window.clearTimeout(switchTimerRef.current)
+      switchTimerRef.current = null
+    }
+    shouldAutoplayNextRef.current = false
     const v = videoRef.current
     if (v) {
       v.pause()
@@ -65,6 +97,17 @@ export default function VideoSection() {
     }
     setPlaying(false)
     setSelectedCase(key)
+  }
+
+  const handleEnded = () => {
+    setPlaying(false)
+    if (switchTimerRef.current) window.clearTimeout(switchTimerRef.current)
+
+    switchTimerRef.current = window.setTimeout(() => {
+      switchTimerRef.current = null
+      shouldAutoplayNextRef.current = true
+      setSelectedCase((current) => current === 'facial' ? 'celulitis' : 'facial')
+    }, 250)
   }
 
   return (
@@ -123,7 +166,7 @@ export default function VideoSection() {
                 src={currentCase.src}
                 playsInline
                 preload="metadata"
-                onEnded={() => setPlaying(false)}
+                onEnded={handleEnded}
                 onPause={() => setPlaying(false)}
                 onPlay={() => setPlaying(true)}
               />
