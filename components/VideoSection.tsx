@@ -70,14 +70,14 @@ export default function VideoSection() {
   return (
     <section className="video-section" id="video">
       <div className="wrap">
-        <SectionHead
-          num="01 / 06"
-          eyebrow="Dos casos de uso"
-          title={'El efecto Sveltea,<br/><em>en contexto</em>.'}
-        />
-
         <div className="video-section__grid">
           <div className="video-section__copy reveal" data-d="1">
+            <SectionHead
+              num="01 / 06"
+              eyebrow="Dos casos de uso"
+              title={'El efecto Sveltea,<br/><em>en contexto</em>.'}
+            />
+
             <div className="video-tabs" aria-label="Selecciona el caso de uso">
               {(Object.keys(videoCases) as VideoCaseKey[]).map((key) => (
                 <button
