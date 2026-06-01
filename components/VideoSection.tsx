@@ -2,9 +2,48 @@
 import { useRef, useState } from 'react'
 import { SectionHead } from './ui'
 
+type VideoCaseKey = 'facial' | 'celulitis'
+
+const videoCases: Record<VideoCaseKey, {
+  label: string
+  eyebrow: string
+  title: string
+  lede: string
+  body: string
+  src: string
+  duration: string
+  meta: string
+  frameLabel: string
+}> = {
+  facial: {
+    label: 'Rejuvenecimiento facial',
+    eyebrow: 'Firmeza, soporte y contorno',
+    title: 'Rostro firme desde el soporte profundo',
+    lede: 'Con los años, el rostro pierde firmeza: aparecen surcos, pliegues y líneas, y el contorno se difumina.',
+    body: 'Sveltea actúa en el plano exacto donde el colágeno y los tejidos de sostén pierden estructura. El profesional deposita el bioestimulador con cánula para formar un andamiaje que reactiva el colágeno propio: los surcos se elevan y la piel se alisa desde dentro.',
+    src: '/SvelteaFacial.mp4',
+    duration: '00:41',
+    meta: 'CASO FACIAL',
+    frameLabel: 'SVELTEA · 002',
+  },
+  celulitis: {
+    label: 'Manejo de celulitis',
+    eyebrow: 'Bioestimulación y subcisión',
+    title: 'Tejido reorganizado desde el plano subcutáneo',
+    lede: 'La celulitis combina septos fibrosos, irregularidades visibles y pérdida de calidad del tejido conectivo.',
+    body: 'La animación muestra cómo las partículas de hidroxiapatita de calcio funcionan como andamio biológico para dirigir la neocolagénesis y la reorganización del tejido subcutáneo desde la aplicación hasta los 18 meses de seguimiento.',
+    src: '/sveltea-video.mp4',
+    duration: '00:38',
+    meta: 'CASO CELULITIS',
+    frameLabel: 'SVELTEA · 001',
+  },
+}
+
 export default function VideoSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [selectedCase, setSelectedCase] = useState<VideoCaseKey>('facial')
   const [playing, setPlaying] = useState(false)
+  const currentCase = videoCases[selectedCase]
 
   const handlePlay = () => {
     const v = videoRef.current
@@ -18,31 +57,51 @@ export default function VideoSection() {
     }
   }
 
+  const selectCase = (key: VideoCaseKey) => {
+    const v = videoRef.current
+    if (v) {
+      v.pause()
+      v.currentTime = 0
+    }
+    setPlaying(false)
+    setSelectedCase(key)
+  }
+
   return (
     <section className="video-section" id="video">
       <div className="wrap">
         <SectionHead
           num="01 / 06"
-          eyebrow="El procedimiento en 35 segundos"
-          title={'Una explicación,<br/><em>visual</em>.'}
+          eyebrow="Dos casos de uso"
+          title={'El efecto Sveltea,<br/><em>en contexto</em>.'}
         />
 
         <div className="video-section__grid">
-          {/* Left: copy */}
           <div className="video-section__copy reveal" data-d="1">
+            <div className="video-tabs" aria-label="Selecciona el caso de uso">
+              {(Object.keys(videoCases) as VideoCaseKey[]).map((key) => (
+                <button
+                  key={key}
+                  className={`video-tabs__btn${selectedCase === key ? ' video-tabs__btn--active' : ''}`}
+                  type="button"
+                  onClick={() => selectCase(key)}
+                  aria-pressed={selectedCase === key}
+                >
+                  {videoCases[key].label}
+                </button>
+              ))}
+            </div>
+
+            <span className="video-section__case-eyebrow">{currentCase.eyebrow}</span>
+            <h3 className="video-section__case-title">{currentCase.title}</h3>
             <p className="video-section__lede">
-              Lo que ocurre <em>debajo de la piel</em> cuando se aplica Sveltea.
+              {currentCase.lede}
             </p>
             <p>
-              Una animación científica que muestra en tiempo real la interacción
-              entre las partículas de hidroxiapatita de calcio y el tejido
-              subcutáneo. Observa cómo el andamio biológico dirige la
-              neocolagénesis y la reorganización del tejido conectivo desde el
-              momento de la aplicación hasta los 18 meses de seguimiento.
+              {currentCase.body}
             </p>
           </div>
 
-          {/* Right: video frame */}
           <div className="reveal" data-d="2">
             <div
               className={`video-frame${playing ? ' is-playing' : ''}`}
@@ -58,9 +117,10 @@ export default function VideoSection() {
               }}
             >
               <video
+                key={currentCase.src}
                 ref={videoRef}
                 className="video-frame__video"
-                src="/sveltea-video.mp4"
+                src={currentCase.src}
                 playsInline
                 preload="metadata"
                 onEnded={() => setPlaying(false)}
@@ -70,10 +130,10 @@ export default function VideoSection() {
 
               <div className="video-frame__gradient" />
 
-              <span className="video-frame__label">SVELTEA · 001</span>
+              <span className="video-frame__label">{currentCase.frameLabel}</span>
 
               <div className="video-frame__rec">
-                <span>ANIMACIÓN</span>
+                <span>{currentCase.meta}</span>
               </div>
 
               <div className="video-frame__rec-status">
@@ -81,7 +141,7 @@ export default function VideoSection() {
                 <span>REC</span>
               </div>
 
-              <div className="video-frame__duration">00:35</div>
+              <div className="video-frame__duration">{currentCase.duration}</div>
 
               <button
                 className="play-btn"
